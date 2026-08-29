@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SentinelMesh | Smart Disaster Response</title>
+
+    <link rel="stylesheet" href="style.css">
+
+        <link rel="stylesheet"
+                    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <div>
+                <h2>SENTINELMESH</h2>
+                <span>DISASTER RESPONSE</span>
+            </div>
+        </div>
+
+
+        <nav class="navigation">
+
+            <div class="nav-section">MAIN</div>
+
+            <a class="nav-item active" href="#dashboardSection">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a class="nav-item" href="#liveMonitoringSection">
+                <i class="fa-solid fa-tower-broadcast"></i>
+                <span>Live Monitoring</span>
+            </a>
+
+            <a class="nav-item" href="#aiDecisionSection">
+                <i class="fa-solid fa-brain"></i>
+                <span>AI Decision Center</span>
+            </a>
+
+            <a class="nav-item" href="#incidentManagementSection">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>Incident Management</span>
+            </a>
+
+            <a class="nav-item" href="#sheltersSection">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Shelters</span>
+            </a>
+
+            <a class="nav-item" href="#reportsSection">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Reports & Analytics</span>
+            </a>
+
+            <div class="nav-section">SYSTEM</div>
+
+            <a class="nav-item" href="users.html">
+                <i class="fa-solid fa-users"></i>
+                <span>Users</span>
+            </a>
+
+            <a class="nav-item" href="settings.html">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+            
+            <a class="nav-item" href="index.html">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+        </nav>
+
+
+        <div class="system-status">
+
+            <div class="status-dot"></div>
+
+            <div>
+                <strong>System Operational</strong>
+                <small>All services online</small>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div>
+                <div class="breadcrumb">
+                    ADMIN / DASHBOARD
+                </div>
+
+                <h1>Command Center</h1>
+
+                <p>
+                    Smart Disaster Response & Rescue Management System
+                </p>
+            </div>
+
+
+            <div class="top-actions">
+
+                <div class="live">
+                    <span></span>
+                    LIVE
+                </div>
+
+                <button class="icon-button">
+                    <i class="fa-solid fa-bell"></i>
+                    <b>4</b>
+                </button>
+
+                <div class="admin">
+
+                    <div class="avatar">
+                        SM
+                    </div>
+
+                    <div>
+                        <strong>Sorfraz Mondal</strong>
+                        <small>Super Admin</small>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= STAT CARDS ================= -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon red">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+
+                <div>
+                    <span>Active Incidents</span>
+                    <h2 id="activeIncidents">24</h2>
+                    <small class="danger-text">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        5% from yesterday
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    <i class="fa-solid fa-user-group"></i>
+                </div>
+
+                <div>
+                    <span>People Affected</span>
+                    <h2 id="peopleAffected">18,420</h2>
+                    <small class="warning-text">
+                        High Priority
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    <i class="fa-solid fa-house"></i>
+                </div>
+
+                <div>
+                    <span>Available Shelters</span>
+                    <h2 id="availableShelters">120</h2>
+                    <small class="success-text">
+                        82% Capacity
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                </div>
+
+                <div>
+                    <span>Connected Sensors</span>
+                    <h2 id="connectedSensors">1,284</h2>
+                    <small class="info-text">
+                        98.7% Online
+                    </small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MAIN GRID ================= -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- COMMAND CENTER -->
+
+            <div class="panel command-panel" id="dashboardSection">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-number">24.</span>
+                        <strong>Command Center</strong>
+                    </div>
+
+                    <div class="panel-actions">
+                        <i class="fa-solid fa-expand"></i>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+
+                </div>
+
+
+                <div class="ai-recommendation">
+
+                    <div class="ai-title">
+
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                        <span>AI Recommendation</span>
+
+                        <label>HIGH PRIORITY</label>
+
+                    </div>
+
+                    <p>
+                        Flood situation is worsening in Zone 3.
+                        Immediate deployment of rescue teams is recommended.
+                    </p>
+
+                    <div class="ai-buttons">
+                        <button class="approve">
+                            <i class="fa-solid fa-check"></i>
+                            Approve
+                        </button>
+
+                        <button class="modify">
+                            Modify
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <div class="incident-list">
+
+                    <h4>Recent Incidents</h4>
+
+                    <div class="incident-row">
+
+                        <div class="incident-icon flood">
+                            <i class="fa-solid fa-water"></i>
+                        </div>
+
+                        <div>
+                            <strong>Flood - Hooghly</strong>
+                            <small>10 min ago</small>
+                        </div>
+
+                        <span class="badge critical">Critical</span>
+
+                    </div>
+
+
+                    <div class="incident-row">
+
+                        <div class="incident-icon fire">
+                            <i class="fa-solid fa-fire"></i>
+                        </div>
+
+                        <div>
+                            <strong>Fire - City Center</strong>
+                            <small>20 min ago</small>
+                        </div>
+
+                        <span class="badge high">High</span>
+
+                    </div>
+
+
+                    <div class="incident-row">
+
+                        <div class="incident-icon medical">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+
+                        <div>
+                            <strong>Medical - Siliguri</strong>
+                            <small>30 min ago</small>
+                        </div>
+
+                        <span class="badge medium">Medium</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- LIVE MAP -->
+
+            <div class="panel map-panel" id="liveMonitoringSection">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-number">22.</span>
+                        <strong>Live Monitoring Map</strong>
+                    </div>
+
+                    <div class="map-controls">
+
+                        <button class="map-filter map-mode" type="button" data-map-mode="street">
+                            Map
+                        </button>
+
+                        <button class="map-filter map-mode active" type="button" data-map-mode="satellite">
+                            Satellite
+                        </button>
+
+                        <button class="map-filter locate-button" id="locateMe" type="button" title="Show my live location" aria-label="Show my live location">
+                            <i class="fa-solid fa-location-crosshairs"></i>
+                        </button>
+
+                        <button class="map-filter active" data-type="all">
+                            All
+                        </button>
+
+                        <button class="map-filter" data-type="fire" title="Show fire response areas" aria-label="Show fire response areas">
+                            <i class="fa-solid fa-fire"></i>
+                        </button>
+
+                        <button class="map-filter" data-type="flood" title="Show flood areas" aria-label="Show flood areas">
+                            <i class="fa-solid fa-water"></i>
+                        </button>
+
+                        <button class="map-filter" data-type="earthquake" title="Show earthquake areas" aria-label="Show earthquake areas">
+                            <i class="fa-solid fa-house-crack"></i>
+                        </button>
+
+                        <button class="map-filter" data-type="rainfall" title="Show heavy rainfall areas" aria-label="Show heavy rainfall areas">
+                            <i class="fa-solid fa-cloud-rain"></i>
+                        </button>
+
+                        <button class="map-filter" data-type="shelter" title="Show shelter areas" aria-label="Show shelter areas">
+                            <i class="fa-solid fa-house"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="map-body">
+
+                    <div class="map" id="liveMap" aria-label="Live disaster monitoring map">
+                        <div class="location-status" id="locationStatus" role="status" aria-live="polite">
+                            Location not shared
+                        </div>
+                    </div>
+
+                    <aside class="map-details" id="mapDetails" aria-live="polite">
+                        <div class="map-details-heading">
+                            <span>AREA INTELLIGENCE</span>
+                            <strong>All monitored areas</strong>
+                        </div>
+                        <p class="map-details-empty">Select fire or flood to see what is happening and nearby shelters.</p>
+                    </aside>
+
+                </div>
+
+
+                <div class="map-stats">
+
+                    <div>
+                        <span>Water Level</span>
+                        <strong id="mapWaterLevel">2.4 m</strong>
+                        <small class="danger-text">High</small>
+                    </div>
+
+                    <div>
+                        <span>Rainfall</span>
+                        <strong id="mapRainfall">82 mm</strong>
+                        <small class="danger-text">Heavy</small>
+                    </div>
+
+                    <div>
+                        <span>Wind Speed</span>
+                        <strong id="mapWindSpeed">28 km/h</strong>
+                        <small class="warning-text">Moderate</small>
+                    </div>
+
+                    <div>
+                        <span>Temperature</span>
+                        <strong id="temperature">24°C</strong>
+                        <small class="success-text">Normal</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INCIDENT MANAGEMENT -->
+
+            <div class="panel incidents-panel" id="incidentManagementSection">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-number">23.</span>
+                        <strong>Incident Management</strong>
+                    </div>
+
+                    <i class="fa-solid fa-ellipsis"></i>
+
+                </div>
+
+
+                <div class="tabs">
+
+                    <button class="tab active">All</button>
+                    <button class="tab">Critical</button>
+                    <button class="tab">High</button>
+                    <button class="tab">Medium</button>
+                    <button class="tab">Low</button>
+
+                </div>
+
+
+                <div class="table">
+
+                    <div class="table-head">
+                        <span>ID</span>
+                        <span>Type</span>
+                        <span>Location</span>
+                        <span>Reported By</span>
+                        <span>Time</span>
+                        <span>Status</span>
+                    </div>
+
+
+                    <div class="table-row">
+
+                        <span>INC-1047</span>
+                        <span>Flood</span>
+                        <span>Hooghly</span>
+                        <span>Citizen</span>
+                        <span>10 min</span>
+                        <span class="online">Active</span>
+
+                    </div>
+
+
+                    <div class="table-row">
+
+                        <span>INC-1046</span>
+                        <span>Fire</span>
+                        <span>City Center</span>
+                        <span>Camera</span>
+                        <span>20 min</span>
+                        <span class="online">Active</span>
+
+                    </div>
+
+
+                    <div class="table-row">
+
+                        <span>INC-1045</span>
+                        <span>Medical</span>
+                        <span>Sector 4</span>
+                        <span>Citizen</span>
+                        <span>30 min</span>
+                        <span class="online">Active</span>
+
+                    </div>
+
+
+                    <div class="table-row">
+
+                        <span>INC-1044</span>
+                        <span>Road Block</span>
+                        <span>Heart Road</span>
+                        <span>IoT</span>
+                        <span>40 min</span>
+                        <span class="online">Active</span>
+
+                    </div>
+
+
+                    <div class="table-row">
+
+                        <span>INC-1043</span>
+                        <span>Building</span>
+                        <span>Pradhan Nagar</span>
+                        <span>Citizen</span>
+                        <span>50 min</span>
+                        <span class="online">Active</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- AI DECISION -->
+
+            <div class="panel ai-panel" id="aiDecisionSection">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-number">24.</span>
+                        <strong>AI Decision Center</strong>
+                    </div>
+
+                    <i class="fa-solid fa-ellipsis"></i>
+
+                </div>
+
+
+                <div class="risk-score">
+
+                    <div>
+
+                        <span>Overall Risk Score</span>
+
+                        <strong id="riskScore">8.7</strong>
+
+                    </div>
+
+                    <span class="risk-label">
+                        HIGH RISK
+                    </span>
+
+                </div>
+
+
+                <div class="donut-area">
+
+                    <div class="donut">
+
+                        <div class="donut-center">
+                            <strong id="riskPercent">87%</strong>
+                            <small>Risk</small>
+                        </div>
+
+                    </div>
+
+                    <div class="legend">
+
+                        <div>
+                            <span class="dot red"></span>
+                            Flood
+                        </div>
+
+                        <div>
+                            <span class="dot orange"></span>
+                            Fire
+                        </div>
+
+                        <div>
+                            <span class="dot blue"></span>
+                            Medical
+                        </div>
+
+                        <div>
+                            <span class="dot green"></span>
+                            Others
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <h4>Top Recommendations</h4>
+
+                <ol class="recommendations">
+
+                    <li>
+                        Deploy boats to Mangalpur
+                    </li>
+
+                    <li>
+                        Evacuate low-lying areas
+                    </li>
+
+                    <li>
+                        Open emergency shelters
+                    </li>
+
+                    <li>
+                        Alert nearby districts
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+
+            <!-- IOT -->
+
+            <div class="panel sensors-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-number">25.</span>
+                        <strong>IoT Sensor Monitoring</strong>
+                    </div>
+
+                    <span class="sensor-status">
+                        <i></i>
+                        98.7% ONLINE
+                    </span>
+
+                </div>
+
+
+                <div class="sensor-grid">
+
+
+                    <div class="sensor-card">
+
+                        <div class="sensor-top">
+                            <span>Water Level</span>
+                            <i class="fa-solid fa-water"></i>
+                        </div>
+
+                        <strong id="sensorWaterLevel">2.4 m</strong>
+
+                        <span class="sensor-warning">
+                            High
+                        </span>
+
+                        <div class="mini-chart water-chart"></div>
+
+                    </div>
+
+
+                    <div class="sensor-card">
+
+                        <div class="sensor-top">
+                            <span>Rain Gauge</span>
+                            <i class="fa-solid fa-cloud-rain"></i>
+                        </div>
+
+                        <strong id="sensorRainfall">82 mm</strong>
+
+                        <span class="sensor-warning">
+                            Heavy
+                        </span>
+
+                        <div class="mini-chart rain-chart"></div>
+
+                    </div>
+
+
+                    <div class="sensor-card">
+
+                        <div class="sensor-top">
+                            <span>Temperature</span>
+                            <i class="fa-solid fa-temperature-half"></i>
+                        </div>
+
+                        <strong id="tempSensor">24°C</strong>
+
+                        <span class="sensor-normal">
+                            Normal
+                        </span>
+
+                        <div class="mini-chart temp-chart"></div>
+
+                    </div>
+
+
+                    <div class="sensor-card">
+
+                        <div class="sensor-top">
+                            <span>Gas Sensor</span>
+                            <i class="fa-solid fa-smog"></i>
+                        </div>
+
+                        <strong id="sensorGas">0 ppm</strong>
+
+                        <span class="sensor-normal">
+                            Safe
+                        </span>
+
+                        <div class="mini-chart gas-chart"></div>
+
+                    </div>
+
+
+                    <div class="sensor-card">
+
+                        <div class="sensor-top">
+                            <span>Snow Sensor</span>
+                            <i class="fa-solid fa-snowflake"></i>
+                        </div>
+
+                        <strong id="sensorAqi">12 AQI</strong>
+
+                        <span class="sensor-warning">
+                            Moderate
+                        </span>
+
+                        <div class="mini-chart snow-chart"></div>
+
+                    </div>
+
+
+                    <div class="sensor-card">
+
+                        <div class="sensor-top">
+                            <span>Wind Speed</span>
+                            <i class="fa-solid fa-wind"></i>
+                        </div>
+
+                        <strong id="sensorWindSpeed">28 km/h</strong>
+
+                        <span class="sensor-warning">
+                            Moderate
+                        </span>
+
+                        <div class="mini-chart wind-chart"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SHELTER MANAGEMENT -->
+
+            <div class="panel shelter-panel" id="sheltersSection">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-number">26.</span>
+                        <strong>Shelter Management</strong>
+                    </div>
+
+                    <i class="fa-solid fa-ellipsis"></i>
+
+                </div>
+
+
+                <div class="shelter-summary">
+
+                    <div>
+                        <span>Total Shelters</span>
+                        <strong>24</strong>
+                    </div>
+
+                    <div>
+                        <span>Available</span>
+                        <strong class="green-text">8</strong>
+                    </div>
+
+                    <div>
+                        <span>Occupied</span>
+                        <strong class="red-text">16</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="shelter-table">
+
+                    <div class="shelter-head">
+                        <span>Shelter Name</span>
+                        <span>Location</span>
+                        <span>Capacity</span>
+                        <span>Occupied</span>
+                        <span>Status</span>
+                    </div>
+
+
+                    <div class="shelter-row">
+                        <span>Maitighara Sports</span>
+                        <span>Siliguri</span>
+                        <span>200</span>
+                        <span>125</span>
+                        <span class="available">Available</span>
+                    </div>
+
+
+                    <div class="shelter-row">
+                        <span>City Hall</span>
+                        <span>Hooghly</span>
+                        <span>500</span>
+                        <span>490</span>
+                        <span class="limited">Limited</span>
+                    </div>
+
+
+                    <div class="shelter-row">
+                        <span>Surya Sen School</span>
+                        <span>Siliguri</span>
+                        <span>150</span>
+                        <span>150</span>
+                        <span class="full">Full</span>
+                    </div>
+
+
+                    <div class="shelter-row">
+                        <span>Pradhan Nagar</span>
+                        <span>Siliguri</span>
+                        <span>300</span>
+                        <span>190</span>
+                        <span class="available">Available</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ANALYTICS -->
+
+            <div class="panel analytics-panel" id="reportsSection">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-number">27.</span>
+                        <strong>Analytics & Reports</strong>
+                    </div>
+
+                    <i class="fa-solid fa-ellipsis"></i>
+
+                </div>
+
+
+                <div class="analytics-chart">
+
+                    <div class="chart-lines">
+
+                        <span style="height:25%"></span>
+                        <span style="height:50%"></span>
+                        <span style="height:35%"></span>
+                        <span style="height:70%"></span>
+                        <span style="height:45%"></span>
+                        <span style="height:80%"></span>
+                        <span style="height:60%"></span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-labels">
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+                    <span>Sun</span>
+                </div>
+
+
+                <div class="analytics-stats">
+
+                    <div>
+                        <span>Total Incidents</span>
+                        <strong>142</strong>
+                        <small class="success-text">+18%</small>
+                    </div>
+
+                    <div>
+                        <span>Resolved</span>
+                        <strong>96</strong>
+                        <small class="success-text">+12%</small>
+                    </div>
+
+                    <div>
+                        <span>Pending</span>
+                        <strong>46</strong>
+                        <small class="danger-text">+6%</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <span>
+                © 2026 SentinelMesh Smart Disaster Response System
+            </span>
+
+            <span>
+                Last updated:
+                <strong id="lastUpdated">Just now</strong>
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+<script src="script.js"></script>
+<script src="map.js"></script>
+
+</body>
+</html>

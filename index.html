@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SentinelMesh | Admin Login</title>
+
+    <link rel="stylesheet" href="login.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<div class="login-page">
+
+    <!-- LEFT SIDE -->
+    <div class="login-left">
+
+        <div class="brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <div>
+                <h2>SENTINELMESH</h2>
+                <span>SMART DISASTER RESPONSE</span>
+            </div>
+        </div>
+
+
+        <div class="hero-content">
+
+            <div class="status">
+                <span></span>
+                SYSTEM OPERATIONAL
+            </div>
+
+            <h1>
+                Smart Disaster Response
+                <strong>& Rescue Management</strong>
+            </h1>
+
+            <p>
+                A centralized command platform for monitoring disasters,
+                managing emergency incidents, coordinating rescue teams,
+                monitoring shelters and making AI-assisted decisions.
+            </p>
+
+
+            <div class="features">
+
+                <div class="feature">
+                    <i class="fa-solid fa-tower-broadcast"></i>
+
+                    <div>
+                        <strong>Live Monitoring</strong>
+                        <span>Real-time disaster & sensor monitoring</span>
+                    </div>
+                </div>
+
+
+                <div class="feature">
+                    <i class="fa-solid fa-brain"></i>
+
+                    <div>
+                        <strong>AI Decision Support</strong>
+                        <span>Intelligent emergency recommendations</span>
+                    </div>
+                </div>
+
+
+                <div class="feature">
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <div>
+                        <strong>Rescue Coordination</strong>
+                        <span>Track incidents, teams & shelters</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="left-footer">
+            © 2026 SentinelMesh • Smart Disaster Management System
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="login-right">
+
+        <div class="login-card">
+
+            <div class="mobile-logo">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <h2>SENTINELMESH</h2>
+            </div>
+
+
+            <div class="login-heading">
+
+                <span class="small-title">
+                    ADMIN PORTAL
+                </span>
+
+                <h1>Welcome Back</h1>
+
+                <p>
+                    Sign in to access the disaster response command center.
+                </p>
+
+            </div>
+
+
+            <form id="loginForm">
+
+                <!-- EMAIL -->
+
+                <div class="input-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="abc@gmail.com"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="input-group">
+
+                    <div class="password-label">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <a href="#" onclick="forgotPassword(event)">
+                            Forgot Password?
+                        </a>
+
+                    </div>
+
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            onclick="togglePassword()"
+                        >
+                            <i class="fa-solid fa-eye" id="eyeIcon"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- REMEMBER -->
+
+                <div class="remember">
+
+                    <label>
+
+                        <input type="checkbox" id="remember">
+
+                        <span>Remember me</span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button type="submit" class="login-button">
+
+                    <span>Sign In to Command Center</span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+                <div class="secure">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    Secure Admin Access
+
+                </div>
+
+
+                <p id="loginMessage" class="login-message"></p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="login.js"></script>
+
+</body>
+</html>

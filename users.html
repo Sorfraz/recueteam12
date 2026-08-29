@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SentinelMesh | Users</title>
+
+    <link rel="stylesheet" href="users.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+    <div class="users-page">
+        <header class="users-header">
+            <div class="brand-block">
+                <a class="back-link" href="dashboard.html" aria-label="Back to dashboard">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                <div class="brand-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div>
+                    <h1>SENTINELMESH</h1>
+                    <span>USER MANAGEMENT</span>
+                </div>
+            </div>
+
+            <a class="dashboard-link" href="dashboard.html">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </a>
+        </header>
+
+        <main class="users-main">
+            <div class="page-heading">
+                <div>
+                    <span class="eyebrow">SYSTEM / USERS</span>
+                    <h2>Users</h2>
+                    <p>Manage system users and monitor active dashboard sessions.</p>
+                </div>
+                <div class="online-summary">
+                    <span class="online-dot"></span>
+                    <strong>1 currently online</strong>
+                </div>
+            </div>
+
+            <section class="summary-grid" aria-label="User summary">
+                <div class="summary-card">
+                    <span>Total users</span>
+                    <strong>6</strong>
+                    <small>Registered accounts</small>
+                </div>
+                <div class="summary-card green-accent">
+                    <span>Online now</span>
+                    <strong>1</strong>
+                    <small>Active dashboard session</small>
+                </div>
+                <div class="summary-card blue-accent">
+                    <span>Access level</span>
+                    <strong>Admin</strong>
+                    <small>Command center access</small>
+                </div>
+            </section>
+
+            <section class="user-panel">
+                <div class="panel-heading">
+                    <div>
+                        <span class="eyebrow">ACCESS DIRECTORY</span>
+                        <h3>System users</h3>
+                    </div>
+                    <span class="user-count">6 USERS</span>
+                </div>
+
+                <div class="user-list">
+                    <article class="user-row active-user">
+                        <div class="avatar red-avatar">SM</div>
+                        <div class="user-identity">
+                            <strong>Sorfraz Mondal</strong>
+                            <span>Super Admin</span>
+                        </div>
+                        <div class="interface-cell">
+                            <span>Current interface</span>
+                            <strong><i class="fa-solid fa-chart-line"></i> Dashboard</strong>
+                        </div>
+                        <div class="user-state active-state"><span></span> Currently using</div>
+                    </article>
+
+                    <article class="user-row">
+                        <div class="avatar orange-avatar">SM</div>
+                        <div class="user-identity">
+                            <strong>Surajit Majhi</strong>
+                            <span>Response Coordinator</span>
+                        </div>
+                        <div class="interface-cell">
+                            <span>Last access</span>
+                            <strong>Today, 09:42</strong>
+                        </div>
+                        <div class="user-state offline-state">Offline</div>
+                    </article>
+
+                    <article class="user-row">
+                        <div class="avatar blue-avatar">RD</div>
+                        <div class="user-identity">
+                            <strong>Raj Dey Kabiraj</strong>
+                            <span>Incident Manager</span>
+                        </div>
+                        <div class="interface-cell">
+                            <span>Last access</span>
+                            <strong>Today, 08:17</strong>
+                        </div>
+                        <div class="user-state offline-state">Offline</div>
+                    </article>
+
+                    <article class="user-row">
+                        <div class="avatar green-avatar">AS</div>
+                        <div class="user-identity">
+                            <strong>Ankar Samanta</strong>
+                            <span>Rescue Operations</span>
+                        </div>
+                        <div class="interface-cell">
+                            <span>Last access</span>
+                            <strong>Yesterday, 18:31</strong>
+                        </div>
+                        <div class="user-state offline-state">Offline</div>
+                    </article>
+
+                    <article class="user-row">
+                        <div class="avatar violet-avatar">SG</div>
+                        <div class="user-identity">
+                            <strong>Sayantani Ghosh</strong>
+                            <span>Shelter Coordinator</span>
+                        </div>
+                        <div class="interface-cell">
+                            <span>Last access</span>
+                            <strong>Yesterday, 16:08</strong>
+                        </div>
+                        <div class="user-state offline-state">Offline</div>
+                    </article>
+
+                    <article class="user-row">
+                        <div class="avatar cyan-avatar">SB</div>
+                        <div class="user-identity">
+                            <strong>Subhajit Bera</strong>
+                            <span>Monitoring Analyst</span>
+                        </div>
+                        <div class="interface-cell">
+                            <span>Last access</span>
+                            <strong>Aug 27, 14:26</strong>
+                        </div>
+                        <div class="user-state offline-state">Offline</div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <span>SentinelMesh Smart Disaster Response System</span>
+            <span><i class="fa-solid fa-lock"></i> Secure user directory</span>
+        </footer>
+    </div>
+</body>
+</html>

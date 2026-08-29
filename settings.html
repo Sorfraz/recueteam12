@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SentinelMesh | Settings</title>
+
+    <link rel="stylesheet" href="settings.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+    <div class="settings-page">
+        <header class="settings-header">
+            <div class="brand-block">
+                <a class="back-link" href="dashboard.html" aria-label="Back to dashboard">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                <div class="brand-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div>
+                    <h1>SENTINELMESH</h1>
+                    <span>SYSTEM SETTINGS</span>
+                </div>
+            </div>
+            <a class="dashboard-link" href="dashboard.html">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </a>
+        </header>
+
+        <main class="settings-main">
+            <div class="page-heading">
+                <div>
+                    <span class="eyebrow">SYSTEM / SETTINGS</span>
+                    <h2>Settings</h2>
+                    <p>Configure monitoring, alerts, and command center preferences.</p>
+                </div>
+                <span class="status-badge"><i class="fa-solid fa-circle-check"></i> System operational</span>
+            </div>
+
+            <form id="settingsForm">
+                <section class="settings-section">
+                    <div class="section-heading">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        <div>
+                            <h3>Map & location</h3>
+                            <p>Choose how live incidents and your position are displayed.</p>
+                        </div>
+                    </div>
+                    <div class="setting-row">
+                        <div><strong>Default map view</strong><span>Choose the map layer shown when the dashboard opens.</span></div>
+                        <select id="mapMode">
+                            <option value="satellite">Satellite</option>
+                            <option value="street">Street map</option>
+                        </select>
+                    </div>
+                    <div class="setting-row">
+                        <div><strong>Live location</strong><span>Allow the map to show and update your current location.</span></div>
+                        <label class="switch"><input type="checkbox" id="liveLocation"><span></span></label>
+                    </div>
+                    <div class="setting-row">
+                        <div><strong>Show area labels</strong><span>Display place names and boundaries over satellite imagery.</span></div>
+                        <label class="switch"><input type="checkbox" id="areaLabels" checked><span></span></label>
+                    </div>
+                </section>
+
+                <section class="settings-section">
+                    <div class="section-heading">
+                        <i class="fa-solid fa-bell"></i>
+                        <div>
+                            <h3>Alert preferences</h3>
+                            <p>Control how emergency updates reach the command center.</p>
+                        </div>
+                    </div>
+                    <div class="setting-row">
+                        <div><strong>Critical incident alerts</strong><span>Receive notifications for critical and high-priority incidents.</span></div>
+                        <label class="switch"><input type="checkbox" id="criticalAlerts" checked><span></span></label>
+                    </div>
+                    <div class="setting-row">
+                        <div><strong>Shelter capacity warnings</strong><span>Notify when a shelter reaches limited capacity.</span></div>
+                        <label class="switch"><input type="checkbox" id="shelterAlerts" checked><span></span></label>
+                    </div>
+                    <div class="setting-row">
+                        <div><strong>Alert sound</strong><span>Play an audio cue when a new alert arrives.</span></div>
+                        <label class="switch"><input type="checkbox" id="alertSound"><span></span></label>
+                    </div>
+                </section>
+
+                <section class="settings-section">
+                    <div class="section-heading">
+                        <i class="fa-solid fa-sliders"></i>
+                        <div>
+                            <h3>Interface</h3>
+                            <p>Adjust the command center information density.</p>
+                        </div>
+                    </div>
+                    <div class="setting-row">
+                        <div><strong>Dashboard density</strong><span>Set the amount of information shown in each panel.</span></div>
+                        <select id="density">
+                            <option value="comfortable">Comfortable</option>
+                            <option value="compact">Compact</option>
+                        </select>
+                    </div>
+                    <div class="setting-row">
+                        <div><strong>Auto-refresh data</strong><span>Keep incident and sensor values updated automatically.</span></div>
+                        <label class="switch"><input type="checkbox" id="autoRefresh" checked><span></span></label>
+                    </div>
+                </section>
+
+                <section class="account-panel">
+                    <div class="account-avatar">SM</div>
+                    <div>
+                        <span class="eyebrow">SIGNED IN AS</span>
+                        <strong>Sorfraz Mondal</strong>
+                        <small>Super Admin · Full command center access</small>
+                    </div>
+                    <a href="users.html">View users <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </section>
+
+                <div class="form-actions">
+                    <span id="saveMessage" role="status" aria-live="polite"></span>
+                    <button type="submit" class="save-button"><i class="fa-solid fa-check"></i> Save settings</button>
+                </div>
+            </form>
+        </main>
+
+        <footer>
+            <span>SentinelMesh Smart Disaster Response System</span>
+            <span><i class="fa-solid fa-lock"></i> Secure configuration</span>
+        </footer>
+    </div>
+
+    <script src="settings.js"></script>
+</body>
+</html>
